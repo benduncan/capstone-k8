@@ -41,8 +41,8 @@ docker:
 	#$(MAKE) test
 	docker build -t $(GO_PROJECT_NAME) .
 	# Change for our new ECR in AWS
-	#docker tag $(GO_PROJECT_NAME) gcr.io/$(PROJECT_ID)/$(GO_PROJECT_NAME):$(IMAGE_TAG)
-	#docker push gcr.io/$(PROJECT_ID)/$(GO_PROJECT_NAME):$(IMAGE_TAG)
+	docker tag $(GO_PROJECT_NAME) 740425403081.dkr.ecr.ap-southeast-2.amazonaws.com/$(GO_PROJECT_NAME):$(IMAGE_TAG)
+	docker push 740425403081.dkr.ecr.ap-southeast-2.amazonaws.com/$(GO_PROJECT_NAME):$(IMAGE_TAG)
 
 kubernetes:
 	@echo "\n....Updating Kubernetes ...."

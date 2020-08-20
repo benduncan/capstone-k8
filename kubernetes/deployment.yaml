@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: capstone-deployment
+  labels:
+    app: capstone
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: capstone
+  template:
+    metadata:
+      labels:
+        app: capstone
+        lastupdate: "1553658806"
+    spec:
+      containers:
+        - name: capstone-container
+          image: 740425403081.dkr.ecr.ap-southeast-2.amazonaws.com/capstone-k8:latest
+          imagePullPolicy: Always
+          env:
+            - name: API_PORT
+              value: "8000"
+          ports:
+            - containerPort: 8000

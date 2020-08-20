@@ -39,6 +39,7 @@ clean:
 docker:
 	@echo "\n....Building docker image ($(IMAGE_TAG)) and uploading to ECR ...."
 	#$(MAKE) test
+	aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 740425403081.dkr.ecr.ap-southeast-2.amazonaws.com
 	docker build -t $(GO_PROJECT_NAME) .
 	# Change for our new ECR in AWS
 	docker tag $(GO_PROJECT_NAME) 740425403081.dkr.ecr.ap-southeast-2.amazonaws.com/$(GO_PROJECT_NAME):$(IMAGE_TAG)
